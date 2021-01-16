@@ -1,3 +1,5 @@
+import 'package:design_sneakers/models/shoe.dart';
+import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -78,25 +80,18 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       height: ScreenUtil().setHeight(64),
                       width: ScreenUtil().setWidth(64),
-                      child: Center(
-                        child: Icon(Icons.search),
-                      ),
-                      decoration: BoxDecoration(
+                      child: MaterialButton(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              offset: Offset(0,4),
-                              blurRadius: 4
-                          ),
-                          BoxShadow(
-                              color: Colors.black12,
-                              offset: Offset(0,-6),
-                              blurRadius: 4
-                          )
-                        ],
+                        elevation: 8,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                        onPressed: (){},
+                        child: Center(
+                          child: Icon(Icons.search),
+                        ),
                       ),
+
                     ),
                     SizedBox(
                       width: ScreenUtil().setWidth(16),
@@ -104,25 +99,18 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       height: ScreenUtil().setHeight(64),
                       width: ScreenUtil().setWidth(64),
-                      child: Center(
-                        child: Icon(Icons.filter_alt_outlined),
-                      ),
-                      decoration: BoxDecoration(
+                      child: MaterialButton(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              offset: Offset(0,4),
-                              blurRadius: 4
-                          ),
-                          BoxShadow(
-                              color: Colors.black12,
-                              offset: Offset(0,-6),
-                              blurRadius: 4
-                          )
-                        ],
+                        elevation: 8,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                        onPressed: (){},
+                        child: Center(
+                          child: Icon(Icons.filter_alt_outlined),
+                        ),
                       ),
+
                     ),
                     SizedBox(
                       width: ScreenUtil().setWidth(16),
@@ -132,20 +120,22 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: ScreenUtil().setHeight(64),
                   width: ScreenUtil().setWidth(148),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: ScreenUtil().setWidth(16)
-                  ),
-                  child: Row(
-                    children: [
-                      Text("Cart",style: TextStyle(color: Colors.white),),
-                      SizedBox(width: ScreenUtil().setWidth(16),),
-                      Text("XX",style: TextStyle(color: Colors.white),),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
+                  child: MaterialButton(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(15),
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)
+                    ),
+                    onPressed: (){},
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Text("Cart    XXX",style: TextStyle(color: Colors.white),)
+                        ],
+                      )
+                    ),
                   ),
+
                 ),
               ],
             ),
@@ -157,7 +147,18 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: Container(color: Colors.red,),
+                    child: ListView(
+                      padding: EdgeInsets.zero,
+                      children: [
+                        ShoeWidget(
+                          Shoe(
+                              name: "Adizero",
+                              imageURL: "assets/images/adidas2.png",
+                              price: 199
+                          ),
+                        )
+                      ],
+                    )
                   ),
                   Expanded(
                     flex: 1,
