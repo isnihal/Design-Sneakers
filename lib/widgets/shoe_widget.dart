@@ -38,7 +38,13 @@ class ShoeWidget extends StatelessWidget {
                     end: Alignment.bottomLeft
                 ),
               ),
-              child: Image.asset(shoe.imageURL),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  shoe.discount!=0? Text("-10% Off"):SizedBox(),
+                  Image.asset(shoe.imageURL),
+                ],
+              )
             ),
           ),
           SizedBox(height: ScreenUtil().setHeight(8),),

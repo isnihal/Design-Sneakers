@@ -158,7 +158,8 @@ class _HomePageState extends State<HomePage> {
                             Shoe(
                                 name: "Adizero",
                                 imageURL: "assets/images/adidas2.png",
-                                price: 199
+                                price: 199,
+                                discount: 0
                             ),
                           )
                         ],
@@ -184,7 +185,8 @@ class _HomePageState extends State<HomePage> {
                                   Shoe(
                                       name: "Adizero",
                                       imageURL: "assets/images/adidas2.png",
-                                      price: 199
+                                      price: 199,
+                                      discount: 10
                                   ),
                                 )
                               ],
