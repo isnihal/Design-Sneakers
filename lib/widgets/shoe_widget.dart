@@ -33,7 +33,7 @@ class ShoeWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(
-                    colors: [Colors.white12,Colors.grey[300]],
+                    colors: [Colors.grey[100],Colors.grey[300]],
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft
                 ),
@@ -42,9 +42,9 @@ class ShoeWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: ScreenUtil().setHeight(8),),
-          Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w100,fontSize: 16),),
+          Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w100,fontSize: 18),),
           SizedBox(height: ScreenUtil().setHeight(4),),
-          Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+          Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
         ],
       ),
     );

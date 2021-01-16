@@ -147,22 +147,52 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: [
-                        ShoeWidget(
-                          Shoe(
-                              name: "Adizero",
-                              imageURL: "assets/images/adidas2.png",
-                              price: 199
-                          ),
-                        )
-                      ],
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        right: ScreenUtil().setWidth(8)
+                      ),
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        children: [
+                          ShoeWidget(
+                            Shoe(
+                                name: "Adizero",
+                                imageURL: "assets/images/adidas2.png",
+                                price: 199
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ),
                   Expanded(
                     flex: 1,
-                    child: Container(color: Colors.yellow,),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(8)
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: ScreenUtil().setHeight(90),
+                          ),
+                          Expanded(
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              children: [
+                                ShoeWidget(
+                                  Shoe(
+                                      name: "Adizero",
+                                      imageURL: "assets/images/adidas2.png",
+                                      price: 199
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   )
                 ],
               ),
