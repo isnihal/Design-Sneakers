@@ -10,12 +10,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Design Sneakers',
+      home: HomePage(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          backgroundColor: Colors.white,
+          primaryColor: Colors.black,
           fontFamily: 'Montserrat'
       ),
-      home: HomePage()
     );
   }
 }
