@@ -41,7 +41,7 @@ class ShoeWidget extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  shoe.discount!=0? Text("-10% Off"):SizedBox(),
+                  shoe.discount!=0? Text("-${shoe.discount}% Off"):SizedBox(),
                   Image.asset(shoe.imageURL),
                 ],
               )

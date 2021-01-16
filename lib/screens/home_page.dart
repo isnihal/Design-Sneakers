@@ -1,7 +1,10 @@
 import 'package:design_sneakers/models/shoe.dart';
+import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:waterfall_flow/waterfall_flow.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +18,10 @@ class _HomePageState extends State<HomePage> {
 
     //Screen Util Init
     ScreenUtil.init(context, designSize: Size(414, 896), allowFontScaling: true);
+
+    //Provider data
+    var provider = Provider.of<ShoeProvider>(context);
+    List<Shoe> _shoes = provider.shoes;
 
     return Scaffold(
       body: Container(
@@ -143,60 +150,17 @@ class _HomePageState extends State<HomePage> {
               height: ScreenUtil().setHeight(32),
             ),
             Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        right: ScreenUtil().setWidth(8)
-                      ),
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        children: [
-                          ShoeWidget(
-                            Shoe(
-                                name: "Adizero",
-                                imageURL: "assets/images/adidas2.png",
-                                price: 199,
-                                discount: 0
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: ScreenUtil().setWidth(8)
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: ScreenUtil().setHeight(90),
-                          ),
-                          Expanded(
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              children: [
-                                ShoeWidget(
-                                  Shoe(
-                                      name: "Adizero",
-                                      imageURL: "assets/images/adidas2.png",
-                                      price: 199,
-                                      discount: 10
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  )
-                ],
+              child: WaterfallFlow.builder(
+                itemCount: _shoes.length,
+                padding: EdgeInsets.zero,
+                gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: ScreenUtil().setHeight(30),
+                  crossAxisSpacing: ScreenUtil().setWidth(20),
+                ),
+                itemBuilder: (ctx,index){
+                  return ShoeWidget(_shoes[index]);
+                },
               ),
             )
           ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/shoe.dart';
 
-class ShopProvider with ChangeNotifier{
+class ShoeProvider with ChangeNotifier{
 
   Shoe selectedShoe;
 
@@ -45,128 +45,121 @@ class ShopProvider with ChangeNotifier{
         name: "Pegasus 30",
         brand: "Nike",
         imageURL: "assets/images/nike1.png",
-        price: 345
+        price: 345,
+        discount: 0
     ),
     Shoe(
         name: "Air Force",
         brand: "Nike",
         //colors: [//colors.black,//colors.green],
         imageURL: "assets/images/nike2.png",
-        price: 499
+        price: 499,
+        discount: 0
     ),
     Shoe(
         name: "Air Zoom",
         brand: "Nike",
         //colors: [//colors.grey,//colors.black],
         imageURL: "assets/images/nike3.png",
-        price: 300
+        price: 300,
+        discount: 0
     ),
     Shoe(
         name: "Air Max",
         brand: "Nike",
         //colors: [//colors.white,//colors.red],
         imageURL: "assets/images/nike4.png",
-        price: 345
+        price: 345,
+        discount: 5
     ),
     Shoe(
         name: "Air Jordan Max",
         brand: "Nike",
         //colors: [//colors.white12,//colors.indigo],
         imageURL: "assets/images/nike5.png",
-        price: 999
-    ),
-    Shoe(
-        name: "Air Jordan 1",
-        brand: "Nike",
-        //colors: [//colors.black,//colors.red],
-        imageURL: "assets/images/nike6.png",
-        price: 400
+        price: 999,
+        discount: 0
     ),
     Shoe(
         name: "Ultraboost",
         brand: "Adidas",
         //colors: [//colors.pink[50],//colors.black],
         imageURL: "assets/images/adidas1.png",
-        price: 645
+        price: 645,
+        discount: 4
     ),
     Shoe(
         name: "Adizero",
         brand: "Adidas",
         //colors: [//colors.white12,//colors.red],
         imageURL: "assets/images/adidas2.png",
-        price: 199
+        price: 199,
+        discount: 0
     ),
     Shoe(
         name: "Alpha Bounce",
         brand: "Adidas",
         //colors: [//colors.white12,//colors.orange],
         imageURL: "assets/images/adidas3.png",
-        price: 200
+        price: 200,
+        discount: 30
     ),
     Shoe(
         name: "Solar Drive",
         brand: "Adidas",
         //colors: [//colors.white12,//colors.pink],
         imageURL: "assets/images/adidas4.png",
-        price: 315
+        price: 315,
+        discount: 0
     ),
     Shoe(
         name: "Vigor",
         brand: "Adidas",
         //colors: [//colors.black,//colors.blueAccent],
         imageURL: "assets/images/adidas5.png",
-        price: 399
+        price: 399,
+        discount: 0
     ),
-    Shoe(
-        name: "Running Blade",
-        brand: "Adidas",
-        //colors: [//colors.grey,//colors.blue],
-        imageURL: "assets/images/adidas6.png",
-        price: 800
-    ),
+
     Shoe(
         name: "990 v4",
         brand: "New Balance",
         //colors: [//colors.grey[200],//colors.grey],
         imageURL: "assets/images/nb1.png",
-        price: 199
+        price: 199,
+        discount: 0
     ),
     Shoe(
         name: "1080 v6",
         brand: "New Balance",
         //colors: [//colors.red,//colors.lightBlueAccent],
         imageURL: "assets/images/nb2.png",
-        price: 500
+        price: 500,
+        discount: 0
     ),
-    Shoe(
-        name: "Arishi",
-        brand: "New Balance",
-        //colors: [//colors.white12,//colors.black],
-        imageURL: "assets/images/nb3.png",
-        price: 245
-    ),
+
     Shoe(
         name: "Ultra Road",
         brand: "Skechers",
         //colors: [//colors.black,//colors.red],
         imageURL: "assets/images/skechers1.png",
-        price: 300
+        price: 300,
+        discount: 0
     ),
     Shoe(
         name: "Razor 3",
         brand: "Skechers",
         //colors: [//colors.lightBlueAccent,//colors.pink],
         imageURL: "assets/images/skechers2.png",
-        price: 269
+        price: 269,
+        discount: 0
     ),
-    Shoe(
-        name: "Go Run",
-        brand: "Skechers",
-        //colors: [//colors.white12,//colors.black87],
-        imageURL: "assets/images/skechers3.png",
-        price: 150
-    ),
+
   ];
+
+  List<Shoe> get shoes{
+    return [..._shoes];
+  }
 
 
   List<Shoe> _cart = [];
