@@ -1,5 +1,6 @@
 import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
+import 'package:design_sneakers/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class _ProductPageState extends State<ProductPage> {
     ScreenUtil.init(context, designSize: Size(414, 896), allowFontScaling: true);
 
     //Provider data
-    final provider = Provider.of<ShoeProvider>(context,listen: false);
+    var provider = Provider.of<ShoeProvider>(context,listen: false);
     Shoe shoe = provider.selectedShoe;
 
     return SafeArea(
@@ -33,6 +34,9 @@ class _ProductPageState extends State<ProductPage> {
               width: double.infinity,
               height: double.infinity,
               color: Colors.black,
+              padding: EdgeInsets.symmetric(
+                  horizontal: ScreenUtil().setWidth(32)
+              ),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
@@ -49,9 +53,12 @@ class _ProductPageState extends State<ProductPage> {
                 bottomLeft:  Radius.circular(75)
               ),
               child: Container(
-                color: Colors.white,
                 width: double.infinity,
                 height: double.infinity,
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(
+                    horizontal: ScreenUtil().setWidth(32)
+                ),
                 margin: EdgeInsets.only(
                     bottom: ScreenUtil().setHeight(120)
                 ),
@@ -86,11 +93,47 @@ class _ProductPageState extends State<ProductPage> {
                           height: ScreenUtil().setHeight(414),
                           width: ScreenUtil().setWidth(414),)
                     ),
-                    Row(),
+                    SizedBox(height: ScreenUtil().setHeight(32),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(height: ScreenUtil().setHeight(8),),
+                            Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w100,fontSize: 18),),
+                            SizedBox(height: ScreenUtil().setHeight(4),),
+                            Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                          ],
+                        ),
+                        Container(
+                          height: ScreenUtil().setHeight(64),
+                          width: ScreenUtil().setWidth(148),
+                          child: MaterialButton(
+                            color: Colors.black,
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            onPressed: (){
+                              provider.addToCart(shoe);
+                              Navigator.of(context).pushNamed(CartScreen.routeName);
+                            },
+                            child: Center(
+                                child: Row(
+                                  children: [
+                                    Text("Cart    XXX",style: TextStyle(color: Colors.white),)
+                                  ],
+                                )
+                            ),
+                          ),
+
+                        ),
+                      ],
+                    ),
                     SingleChildScrollView(
                       child: Column(
                         children: [
-
+                          Text("")
                         ],
                       ),
                     ),
