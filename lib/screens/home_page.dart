@@ -7,6 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
 class HomePage extends StatefulWidget {
+
+  static String routeName = "/home_page";
+
   @override
   _HomePageState createState() => _HomePageState();
 }

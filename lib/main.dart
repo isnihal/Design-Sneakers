@@ -1,5 +1,6 @@
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/home_page.dart';
+import 'package:design_sneakers/screens/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
             primaryColor: Colors.black,
             fontFamily: 'Montserrat'
         ),
+        routes: {
+          HomePage.routeName: (ctx)=>HomePage(),
+          ProductPage.routeName: (ctx)=>ProductPage(),
+        },
       ),
     );
   }
