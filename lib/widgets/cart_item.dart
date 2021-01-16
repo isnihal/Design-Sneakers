@@ -20,49 +20,65 @@ class CartWidget extends StatelessWidget {
 
     final provider = Provider.of<ShoeProvider>(context,listen: false);
 
-    return GestureDetector(
-      onTap: (){
-        provider.selectedShoe = shoe;
-        Navigator.of(context).pushNamed(ProductPage.routeName);
-      },
-      child: Container(
-        width: double.infinity,
-        height: ScreenUtil().setHeight(360),
-        margin: EdgeInsets.only(
-          bottom: ScreenUtil().setHeight(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().setHeight(16),
-                      vertical: ScreenUtil().setWidth(16)
+    return Container(
+      width: double.infinity,
+      height: ScreenUtil().setHeight(360),
+      margin: EdgeInsets.only(
+        bottom: ScreenUtil().setHeight(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: ScreenUtil().setHeight(16),
+                    vertical: ScreenUtil().setWidth(16)
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  gradient: LinearGradient(
+                      colors: [Colors.grey[100],Colors.grey[300]],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        colors: [Colors.grey[100],Colors.grey[300]],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft
-                    ),
-                  ),
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      shoe.discount!=0? Text("-${shoe.discount}% Off"):SizedBox(),
-                      Hero(tag: shoe.name,child: Image.asset(shoe.imageURL)),
-                    ],
-                  )
-              ),
+                ),
+                child: Stack(
+                  overflow: Overflow.visible,
+                  fit: StackFit.expand,
+                  children: [
+                    shoe.discount!=0? Text("-${shoe.discount}% Off"):SizedBox(),
+                    Hero(tag: shoe.name,child: Image.asset(shoe.imageURL)),
+
+                  ],
+                )
             ),
-            SizedBox(height: ScreenUtil().setHeight(8),),
-            Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w100,fontSize: 18),),
-            SizedBox(height: ScreenUtil().setHeight(4),),
-            Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
-          ],
-        ),
+          ),
+          SizedBox(height: ScreenUtil().setHeight(8),),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w100,fontSize: 18),),
+                  SizedBox(height: ScreenUtil().setHeight(4),),
+                  Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                ],
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                  onPressed: (){
+                   provider.removeFromCart(shoe);
+                  },
+                  icon: Icon(Icons.delete,color: Colors.black,),
+                ),
+              )
+             ],
+          )
+         ],
       ),
     );
   }
