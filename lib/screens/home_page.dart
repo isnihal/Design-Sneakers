@@ -156,10 +156,13 @@ class _HomePageState extends State<HomePage> {
                 gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: ScreenUtil().setHeight(30),
-                  crossAxisSpacing: ScreenUtil().setWidth(20),
+                  crossAxisSpacing: ScreenUtil().setWidth(30),
                 ),
                 itemBuilder: (ctx,index){
-                  return ShoeWidget(_shoes[index]);
+                  if(index==1)
+                    return ShoeWidget(shoe: _shoes[index], hasMargin: true);
+                  else
+                    return ShoeWidget(shoe: _shoes[index], hasMargin: false);
                 },
               ),
             )

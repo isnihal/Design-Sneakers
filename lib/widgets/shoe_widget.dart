@@ -6,8 +6,9 @@ import '../models/shoe.dart';
 class ShoeWidget extends StatelessWidget {
 
   final Shoe shoe;
+  final bool hasMargin;
 
-  ShoeWidget(this.shoe);
+  ShoeWidget({@required this.shoe,@required this.hasMargin});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class ShoeWidget extends StatelessWidget {
       width: double.infinity,
       height: ScreenUtil().setHeight(360),
       margin: EdgeInsets.only(
+        top: hasMargin? ScreenUtil().setHeight(90):0,
         bottom: ScreenUtil().setHeight(16),
       ),
       child: Column(
