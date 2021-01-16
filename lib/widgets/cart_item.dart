@@ -1,16 +1,16 @@
 import 'package:design_sneakers/providers/shoes_provider.dart';
-import 'package:design_sneakers/screens/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../models/shoe.dart';
 
-class CartWidget extends StatelessWidget {
+class CartItem extends StatelessWidget {
 
   final Shoe shoe;
+  final int cardNum;
 
-  CartWidget({@required this.shoe});
+  CartItem({@required this.shoe,@required this.cardNum});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CartWidget extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: ScreenUtil().setHeight(360),
+      height: ScreenUtil().setHeight(300),
       margin: EdgeInsets.only(
         bottom: ScreenUtil().setHeight(16),
       ),
@@ -47,9 +47,17 @@ class CartWidget extends StatelessWidget {
                   overflow: Overflow.visible,
                   fit: StackFit.expand,
                   children: [
-                    shoe.discount!=0? Text("-${shoe.discount}% Off"):SizedBox(),
                     Hero(tag: shoe.name,child: Image.asset(shoe.imageURL)),
-
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child:  Padding(
+                        padding: EdgeInsets.zero,
+                        child: Text(
+                          "0${cardNum+1}",
+                          style: TextStyle(color: Colors.black87,fontSize: 24,fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
                   ],
                 )
             ),
@@ -70,6 +78,7 @@ class CartWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomRight,
                 child: IconButton(
+                  padding: EdgeInsets.zero,
                   onPressed: (){
                    provider.removeFromCart(shoe);
                   },
