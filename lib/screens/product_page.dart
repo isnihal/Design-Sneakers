@@ -202,7 +202,7 @@ class _ProductPageState extends State<ProductPage> {
               },
               child: Stack(
                 overflow: Overflow.clip,
-                clipBehavior: Clip.none,
+                clipBehavior: Clip.hardEdge,
                 alignment: Alignment.topCenter,
                 children: [
                   Container(
