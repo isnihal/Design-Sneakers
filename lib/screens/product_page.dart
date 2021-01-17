@@ -1,6 +1,7 @@
 import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/cart_screen.dart';
+import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,9 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+
+  ScrollController _scrollController = new ScrollController();
+
   @override
   Widget build(BuildContext context) {
 
@@ -114,9 +118,14 @@ class _ProductPageState extends State<ProductPage> {
                       SizedBox(height: ScreenUtil().setHeight(16),),
                       Expanded(
                         flex: 1,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Text(shoe.description),
+                        child: FadingEdgeScrollView.fromSingleChildScrollView(
+                          gradientFractionOnStart: 0.9,
+                          gradientFractionOnEnd: 0.9,
+                          child: SingleChildScrollView(
+                            controller:  _scrollController,
+                            scrollDirection: Axis.vertical,
+                            child: Text(shoe.description,overflow: TextOverflow.fade,),
+                          ),
                         ),
                       ),
                     ],
