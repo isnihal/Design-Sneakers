@@ -10,6 +10,9 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+
+  SwiperController _swiperController = new SwiperController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,22 +20,32 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            child: Swiper(
-                loop: false,
-                scrollDirection: Axis.horizontal,
-                physics: ClampingScrollPhysics(),
-                itemCount: 4,
-                pagination: new SwiperPagination(
-                  alignment: Alignment.topLeft,
-                  margin: EdgeInsets.only(
-                    top: 18,
-                    left: 18
+            child: NotificationListener(
+              onNotification: (OverscrollIndicatorNotification overscroll) {
+                overscroll.disallowGlow();
+                return;
+              },
+              child: Swiper(
+                  controller: _swiperController,
+                  loop: false,
+                  scrollDirection: Axis.horizontal,
+                  physics: PageScrollPhysics(),
+                  itemCount: 4,
+                  pagination: new SwiperPagination(
+                    alignment: Alignment.topLeft,
+                    margin: EdgeInsets.only(
+                      top: 18,
+                      left: 18
+                    ),
+                    builder: SwiperPagination.dots
                   ),
-                  builder: SwiperPagination.dots
-                ),
-                itemBuilder: (context, index) {
-                  return IntroScreen(index);
-                }
+                  itemBuilder: (context, index) {
+                    return IntroScreen(
+                      index: index,
+                      swiperController: _swiperController,
+                    );
+                  }
+              ),
             )
         ),
       ),

@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 26,
-                      fontWeight: FontWeight.w100
+                      fontWeight: FontWeight.normal
                     ),
                   ),
                   SizedBox(width: ScreenUtil().setWidth(8),),
