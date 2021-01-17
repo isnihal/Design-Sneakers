@@ -179,7 +179,13 @@ class _ProductPageState extends State<ProductPage> {
                           child: SingleChildScrollView(
                             controller:  _scrollController,
                             scrollDirection: Axis.vertical,
-                            child: Text(shoe.description,overflow: TextOverflow.fade,),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(shoe.description,overflow: TextOverflow.fade,),
+                                SizedBox(height: ScreenUtil().setHeight(42),)
+                              ],
+                            )
                           ),
                         ),
                       ),
