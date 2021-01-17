@@ -1,5 +1,7 @@
 import 'package:design_sneakers/widgets/intro_screen.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class OnBoardingScreen extends StatefulWidget {

@@ -5,7 +5,9 @@ import 'package:design_sneakers/screens/search_screen.dart';
 import 'package:design_sneakers/screens/wishlist_screen.dart';
 import 'package:design_sneakers/utils/border_paint.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

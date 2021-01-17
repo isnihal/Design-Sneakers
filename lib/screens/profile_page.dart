@@ -1,6 +1,8 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:design_sneakers/screens/home_page.dart';
+
 import 'package:flutter/material.dart';
+
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
