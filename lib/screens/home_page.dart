@@ -45,13 +45,15 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   IconButton(
                     padding: EdgeInsets.zero,
+                    constraints: BoxConstraints(),
                     icon: Icon(Icons.keyboard_arrow_left),
                     onPressed: (){
-
+                      Navigator.of(context).pop();
                     },
                   ),
                   IconButton(
                     padding: EdgeInsets.zero,
+                    constraints: BoxConstraints(),
                     icon: Icon(Icons.menu),
                     onPressed: (){
 
@@ -59,7 +61,9 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-
+              SizedBox(
+                height: ScreenUtil().setHeight(32),
+              ),
               Row(
                 children: [
                   Text(

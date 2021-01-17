@@ -59,16 +59,21 @@ class _ProductPageState extends State<ProductPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: BoxConstraints(),
                             icon: Icon(Icons.keyboard_arrow_left),
                             onPressed: (){
-
+                              Navigator.of(context).pop();
                             },
                           ),
                           IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: BoxConstraints(),
                             icon: provider.isShoeInWishlist(shoe)? Icon(Icons.favorite):Icon(Icons.favorite_border),
                             onPressed: (){
                               setState(() {
-                                provider.addToWishList(shoe);
+                                if(provider.isShoeInWishlist(shoe)) provider.removeFromWishList(shoe);
+                                else provider.addToWishList(shoe);
                               });
                             },
                           )
