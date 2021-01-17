@@ -4,6 +4,7 @@ import 'package:design_sneakers/screens/home_page.dart';
 import 'package:design_sneakers/screens/onboarding_screen.dart';
 import 'package:design_sneakers/screens/product_page.dart';
 import 'package:design_sneakers/screens/profile_page.dart';
+import 'package:design_sneakers/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           ProductPage.routeName: (ctx)=>ProductPage(),
           CartScreen.routeName: (ctx)=>CartScreen(),
           ProfilePage.routeName: (ctx)=>ProfilePage(),
+          SearchScreen.routeName: (ctx)=>SearchScreen(),
         },
       ),
     );

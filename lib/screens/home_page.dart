@@ -1,6 +1,7 @@
 import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/cart_screen.dart';
+import 'package:design_sneakers/screens/search_screen.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -195,7 +196,9 @@ class _HomePageState extends State<HomePage> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)
                           ),
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.of(context).pushNamed(SearchScreen.routeName);
+                          },
                           child: Center(
                             child: Icon(Icons.search),
                           ),

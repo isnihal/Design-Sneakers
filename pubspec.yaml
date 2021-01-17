@@ -78,6 +78,7 @@ flutter:
     - assets/images/skechers1.png
     - assets/images/skechers2.png
     - assets/images/skechers3.png
+    - assets/images/empty_cart.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
