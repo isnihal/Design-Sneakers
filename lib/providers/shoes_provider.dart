@@ -46,7 +46,8 @@ class ShoeProvider with ChangeNotifier{
         brand: "Nike",
         imageURL: "assets/images/nike1.png",
         price: 345,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     ),
     Shoe(
         name: "Air Force",
@@ -54,7 +55,8 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.black,//colors.green],
         imageURL: "assets/images/nike2.png",
         price: 499,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     ),
     Shoe(
         name: "Air Zoom",
@@ -62,7 +64,8 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.grey,//colors.black],
         imageURL: "assets/images/nike3.png",
         price: 300,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     ),
     Shoe(
         name: "Air Max",
@@ -70,7 +73,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.white,//colors.red],
         imageURL: "assets/images/nike4.png",
         price: 345,
-        discount: 5
+        discount: 5,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Air Jordan Max",
@@ -78,7 +83,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.white12,//colors.indigo],
         imageURL: "assets/images/nike5.png",
         price: 999,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Ultraboost",
@@ -86,7 +93,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.pink[50],//colors.black],
         imageURL: "assets/images/adidas1.png",
         price: 645,
-        discount: 4
+        discount: 4,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Adizero",
@@ -94,7 +103,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.white12,//colors.red],
         imageURL: "assets/images/adidas2.png",
         price: 199,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Alpha Bounce",
@@ -102,7 +113,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.white12,//colors.orange],
         imageURL: "assets/images/adidas3.png",
         price: 200,
-        discount: 30
+        discount: 30,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Solar Drive",
@@ -110,7 +123,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.white12,//colors.pink],
         imageURL: "assets/images/adidas4.png",
         price: 315,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Vigor",
@@ -118,7 +133,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.black,//colors.blueAccent],
         imageURL: "assets/images/adidas5.png",
         price: 399,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
 
     Shoe(
@@ -127,7 +144,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.grey[200],//colors.grey],
         imageURL: "assets/images/nb1.png",
         price: 199,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "1080 v6",
@@ -135,7 +154,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.red,//colors.lightBlueAccent],
         imageURL: "assets/images/nb2.png",
         price: 500,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
 
     Shoe(
@@ -144,7 +165,9 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.black,//colors.red],
         imageURL: "assets/images/skechers1.png",
         price: 300,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     ),
     Shoe(
         name: "Razor 3",
@@ -152,7 +175,8 @@ class ShoeProvider with ChangeNotifier{
         //colors: [//colors.lightBlueAccent,//colors.pink],
         imageURL: "assets/images/skechers2.png",
         price: 269,
-        discount: 0
+        discount: 0,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     ),
 
   ];

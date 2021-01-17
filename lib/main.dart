@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Design Sneakers',
-        home: OnBoardingScreen(),
+        home: HomePage(),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             visualDensity: VisualDensity.adaptivePlatformDensity,

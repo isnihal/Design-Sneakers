@@ -26,121 +26,142 @@ class _ProductPageState extends State<ProductPage> {
 
     return SafeArea(
       child: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          alignment: Alignment.bottomCenter,
+        backgroundColor: Colors.black,
+        body: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: Colors.black,
-              padding: EdgeInsets.symmetric(
-                  horizontal: ScreenUtil().setWidth(32)
-              ),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(75),
+                  bottomLeft:  Radius.circular(75)
+                ),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.white,
                   padding: EdgeInsets.only(
-                    bottom: ScreenUtil().setHeight(32)
+                      right: ScreenUtil().setWidth(32),
+                      left: ScreenUtil().setWidth(32),
                   ),
-                  child: Text("Buy Now",style: TextStyle(color: Colors.white),),
-                ),
-              ),
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(75),
-                bottomLeft:  Radius.circular(75)
-              ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                color: Colors.white,
-                padding: EdgeInsets.symmetric(
-                    horizontal: ScreenUtil().setWidth(32)
-                ),
-                margin: EdgeInsets.only(
-                    bottom: ScreenUtil().setHeight(120)
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: ScreenUtil().setHeight(24),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.keyboard_arrow_left),
-                          onPressed: (){
-
-                          },
-                        ),
-                        IconButton(
-                          icon: provider.isShoeInWishlist(shoe)? Icon(Icons.favorite):Icon(Icons.favorite_border),
-                          onPressed: (){
-                            setState(() {
-                              provider.addToWishList(shoe);
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                    Hero(
-                        tag: shoe.name,
-                        child: Image.asset(
-                          shoe.imageURL,
-                          height: ScreenUtil().setHeight(414),
-                          width: ScreenUtil().setWidth(414),)
-                    ),
-                    SizedBox(height: ScreenUtil().setHeight(32),),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(height: ScreenUtil().setHeight(8),),
-                            Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.normal,fontSize: 18),),
-                            SizedBox(height: ScreenUtil().setHeight(4),),
-                            Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
-                          ],
-                        ),
-                        Container(
-                          height: ScreenUtil().setHeight(64),
-                          width: ScreenUtil().setWidth(148),
-                          child: MaterialButton(
-                            color: Colors.black,
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)
-                            ),
-                            onPressed: (){
-                              provider.addToCart(shoe);
-                              Navigator.of(context).pushNamed(CartScreen.routeName);
-                            },
-                            child: Center(
-                                child: Row(
-                                  children: [
-                                    Text("Cart    XXX",style: TextStyle(color: Colors.white),)
-                                  ],
-                                )
-                            ),
-                          ),
-
-                        ),
-                      ],
-                    ),
-                    SingleChildScrollView(
-                      child: Column(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: ScreenUtil().setHeight(24),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("")
+                          IconButton(
+                            icon: Icon(Icons.keyboard_arrow_left),
+                            onPressed: (){
+
+                            },
+                          ),
+                          IconButton(
+                            icon: provider.isShoeInWishlist(shoe)? Icon(Icons.favorite):Icon(Icons.favorite_border),
+                            onPressed: (){
+                              setState(() {
+                                provider.addToWishList(shoe);
+                              });
+                            },
+                          )
                         ],
                       ),
-                    ),
-                  ],
+                      Hero(
+                          tag: shoe.name,
+                          child: Image.asset(
+                            shoe.imageURL,
+                            height: ScreenUtil().setHeight(414),
+                            width: ScreenUtil().setWidth(414),)
+                      ),
+                      SizedBox(height: ScreenUtil().setHeight(32),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              SizedBox(height: ScreenUtil().setHeight(8),),
+                              Text(shoe.name,style: TextStyle(color: Colors.grey[600],fontWeight: FontWeight.normal,fontSize: 18),),
+                              SizedBox(height: ScreenUtil().setHeight(4),),
+                              Text("\$${shoe.price}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+                            ],
+                          ),
+                          Container(
+                            height: ScreenUtil().setHeight(64),
+                            width: ScreenUtil().setWidth(148),
+                            child: MaterialButton(
+                              color: Colors.black,
+                              elevation: 8,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)
+                              ),
+                              onPressed: (){
+                                provider.addToCart(shoe);
+                                Navigator.of(context).pushNamed(CartScreen.routeName);
+                              },
+                              child: Center(
+                                  child: Row(
+                                    children: [
+                                      Text("Cart    XXX",style: TextStyle(color: Colors.white),)
+                                    ],
+                                  )
+                              ),
+                            ),
+
+                          ),
+                        ],
+                      ),
+                      SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Text("")
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
+            Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: ScreenUtil().setHeight(110),
+                  color: Colors.black,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(32)
+                  ),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          bottom: ScreenUtil().setHeight(26)
+                      ),
+                      child: Text("Buy Now",style: TextStyle(color: Colors.white,fontSize: 16),),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: -ScreenUtil().setHeight(45),
+                  child: Container(
+                    height: ScreenUtil().setHeight(75),
+                    width: ScreenUtil().setHeight(75),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(45)
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Icon(Icons.keyboard_arrow_up),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
           ],
         )
       ),
