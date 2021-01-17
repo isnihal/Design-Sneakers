@@ -102,7 +102,7 @@ class IntroScreen extends StatelessWidget {
               SizedBox(height: 64,),
               Align(
                 alignment: Alignment.centerRight,
-                child: Image.asset("assets/images/nike1.png",width: ScreenUtil().setHeight(414),height: ScreenUtil().setHeight(414),),
+                child: Hero(tag: "assets/images/nike5.png",child: Image.asset("assets/images/nike5.png",width: ScreenUtil().setHeight(414),height: ScreenUtil().setHeight(414),)),
               ),
               SizedBox(
                 height: ScreenUtil().setHeight(90),
@@ -210,7 +210,7 @@ class IntroScreen extends StatelessWidget {
               SizedBox(height: 64,),
               Align(
                 alignment: Alignment.centerRight,
-                child: Image.asset("assets/images/nike5.png",width: ScreenUtil().setHeight(414),height: ScreenUtil().setHeight(414),),
+                child: Image.asset("assets/images/nike1.png",width: ScreenUtil().setHeight(414),height: ScreenUtil().setHeight(414),),
               ),
               SizedBox(
                 height: ScreenUtil().setHeight(90),
