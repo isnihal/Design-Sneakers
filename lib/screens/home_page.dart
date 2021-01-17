@@ -24,98 +24,89 @@ class _HomePageState extends State<HomePage> {
     //Screen Util Init
     ScreenUtil.init(context, designSize: Size(414, 896), allowFontScaling: true);
 
-    var _selectedBrands = [true,true,true,true];
-
     //Provider data
     var provider = Provider.of<ShoeProvider>(context);
-    provider.setFilteredShoes(_selectedBrands);
+
     List<Shoe> _shoes = provider.filteredShoes;
+
+    var _selectedBrands = provider.selectedBrands;
 
     _showAlertDialog(BuildContext context) {
 
-      // set up the button
-      Widget okButton = FlatButton(
-        child: Text("Done"),
-        onPressed: () {
-          setState(() {
-            provider.setFilteredShoes(_selectedBrands);
-          });
-        },
-      );
-
-      // set up the AlertDialog
-      AlertDialog alert = AlertDialog(
-        contentPadding: EdgeInsets.zero,
-        title: Text("Select Brands",style: TextStyle(color: Colors.black87,fontWeight: FontWeight.w600),),
-        content: StatefulBuilder(
-          builder: (context,setState){
-            return  Container(
-              height: ScreenUtil().setHeight(260),
-              width: ScreenUtil().setWidth(120),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CheckboxListTile(
-                      title: Text("Adidas"),
-                      value: _selectedBrands[0],
-                      onChanged: (newValue) {
-                        print(newValue);
-                        setState(() {
-                          _selectedBrands[0] = newValue;
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
-                    ),
-                    CheckboxListTile(
-                      title: Text("Nike"),
-                      value: _selectedBrands[1],
-                      onChanged: (newValue) {
-                        print(newValue);
-                        setState(() {
-                          _selectedBrands[1] = newValue;
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
-                    ),
-                    CheckboxListTile(
-                      title: Text("New Balance"),
-                      value: _selectedBrands[2],
-                      onChanged: (newValue) {
-                        print(newValue);
-                        setState(() {
-                          _selectedBrands[2] = newValue;
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
-                    ),
-                    CheckboxListTile(
-                      title: Text("Skechers"),
-                      value: _selectedBrands[3],
-                      onChanged: (newValue) {
-                        print(newValue);
-                        setState(() {
-                          _selectedBrands[3] = newValue;
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
-        actions: [
-          okButton,
-        ],
-      );
-
-      // show the dialog
+      // Show the dialog
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return alert;
+          return StatefulBuilder(
+            builder: (context,setState){
+              return  AlertDialog(
+                contentPadding: EdgeInsets.zero,
+                title: Text("Select Brands",style: TextStyle(color: Colors.black87,fontWeight: FontWeight.w600),),
+                content: Container(
+                  height: ScreenUtil().setHeight(260),
+                  width: ScreenUtil().setWidth(120),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CheckboxListTile(
+                          title: Text("Adidas"),
+                          value: _selectedBrands[0],
+                          onChanged: (newValue) {
+                            setState(() {
+                              provider.selectedBrands[0] = newValue;
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                        ),
+                        CheckboxListTile(
+                          title: Text("Nike"),
+                          value: _selectedBrands[1],
+                          onChanged: (newValue) {
+                            setState(() {
+                              provider.selectedBrands[1] = newValue;
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                        ),
+                        CheckboxListTile(
+                          title: Text("New Balance"),
+                          value: _selectedBrands[2],
+                          onChanged: (newValue) {
+                            setState(() {
+                              provider.selectedBrands[2] = newValue;
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                        ),
+                        CheckboxListTile(
+                          title: Text("Skechers"),
+                          value: _selectedBrands[3],
+                          onChanged: (newValue) {
+                            setState(() {
+                              provider.selectedBrands[3] = newValue;
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                actions: [
+                  FlatButton(
+                    child: Text("Done"),
+                    onPressed: () {
+                      setState(() {
+                        provider.setFilteredShoes();
+                        Navigator.of(context).pop();
+                      });
+                    },
+                  ),
+              ],
+              );
+            }
+          );
         },
       );
     }
