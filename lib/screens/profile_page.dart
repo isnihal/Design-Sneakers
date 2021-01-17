@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,7 +28,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   _launchWhatsapp() async {
-    //await FlutterLaunch.launchWathsApp(phone: "7907136126", message: "Hello");
+    FlutterOpenWhatsapp.sendSingleMessage("+91 7907136126", "Hello, I'm interested in working with you.");
   }
 
   @override
