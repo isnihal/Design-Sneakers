@@ -170,22 +170,10 @@ class _ProductPageState extends State<ProductPage> {
             ),
             GestureDetector(
               onVerticalDragEnd: (_){
-                if(!provider.isShoeInCart(shoe)){
+                if(!provider.isShoeInCart(shoe)) {
                   provider.addToCart(shoe);
-                  Navigator.of(context).pushNamed(CartScreen.routeName);
                 }
-                else{
-                  _scaffoldKey.currentState.showSnackBar(SnackBar(
-                    content: Text("Item already in cart"),
-                    duration: Duration(seconds: 1),
-                    action: SnackBarAction(
-                      label: "Dismiss",
-                      onPressed: (){
-                       _scaffoldKey.currentState.removeCurrentSnackBar();
-                      },
-                    ),
-                  ));
-                }
+                Navigator.of(context).pushNamed(CartScreen.routeName);
               },
               child: Stack(
                 overflow: Overflow.clip,
