@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         CheckboxListTile(
                           title: Text("Adidas"),
+                          activeColor: Colors.black87,
                           value: _selectedBrands[0],
                           onChanged: (newValue) {
                             setState(() {
@@ -61,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         CheckboxListTile(
                           title: Text("Nike"),
+                          activeColor: Colors.black87,
                           value: _selectedBrands[1],
                           onChanged: (newValue) {
                             setState(() {
@@ -71,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         CheckboxListTile(
                           title: Text("New Balance"),
+                          activeColor: Colors.black87,
                           value: _selectedBrands[2],
                           onChanged: (newValue) {
                             setState(() {
@@ -81,6 +84,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         CheckboxListTile(
                           title: Text("Skechers"),
+                          activeColor: Colors.black87,
                           value: _selectedBrands[3],
                           onChanged: (newValue) {
                             setState(() {
@@ -95,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 actions: [
                   FlatButton(
-                    child: Text("Done"),
+                    child: Text("Done",style: TextStyle(color: Colors.black87),),
                     onPressed: () {
                       setState(() {
                         provider.setFilteredShoes();

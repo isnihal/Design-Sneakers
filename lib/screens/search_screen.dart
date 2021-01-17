@@ -185,6 +185,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             },
                             autofocus: true,
                             textInputAction: TextInputAction.done,
+                            cursorColor: Colors.black87,
                             decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(4),
                                 border: UnderlineInputBorder(
