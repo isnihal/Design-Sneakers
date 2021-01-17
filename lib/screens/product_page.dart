@@ -1,6 +1,7 @@
 import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/cart_screen.dart';
+import 'package:design_sneakers/utils/custom_clipper.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,36 +118,49 @@ class _ProductPageState extends State<ProductPage> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text("Cart",style: TextStyle(color: Colors.white),),
-                                      IconButton(
-                                        icon: Icon(Icons.add,color: Colors.white,),
-                                        onPressed: (){
-                                          if(!provider.isShoeInCart(shoe)){
-                                            provider.addToCart(shoe);
-                                            _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                              content: Text("Item added to cart"),
-                                              duration: Duration(seconds: 1),
-                                              action: SnackBarAction(
-                                                label: "Remove Item",
-                                                onPressed: (){
-                                                 _scaffoldKey.currentState.removeCurrentSnackBar();
-                                                  provider.removeFromCart(shoe);
-                                                },
-                                              ),
-                                            ));
-                                          }
-                                          else{
-                                           _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                              content: Text("Item already in cart"),
-                                              duration: Duration(seconds: 1),
-                                              action: SnackBarAction(
-                                                label: "Dismiss",
-                                                onPressed: (){
-                                                  _scaffoldKey.currentState.removeCurrentSnackBar();
-                                                },
-                                              ),
-                                            ));
-                                          }
-                                        },
+                                      Container(
+                                        height: ScreenUtil().setHeight(40),
+                                        width: ScreenUtil().setWidth(40),
+                                        decoration: CornerDecoration(
+                                            strokeColor: Colors.white,
+                                            cornerSide: CornerSide.all(6,6),
+                                            strokeWidth: 1
+                                        ),
+                                        child: Center(
+                                          child: IconButton(
+                                            padding: EdgeInsets.zero,
+                                            constraints: BoxConstraints(),
+                                            icon: Icon(Icons.add,color: Colors.white,),
+                                            onPressed: (){
+                                              if(!provider.isShoeInCart(shoe)){
+                                                provider.addToCart(shoe);
+                                                _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                                  content: Text("Item added to cart"),
+                                                  duration: Duration(seconds: 1),
+                                                  action: SnackBarAction(
+                                                    label: "Remove Item",
+                                                    onPressed: (){
+                                                     _scaffoldKey.currentState.removeCurrentSnackBar();
+                                                      provider.removeFromCart(shoe);
+                                                    },
+                                                  ),
+                                                ));
+                                              }
+                                              else{
+                                               _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                                  content: Text("Item already in cart"),
+                                                  duration: Duration(seconds: 1),
+                                                  action: SnackBarAction(
+                                                    label: "Dismiss",
+                                                    onPressed: (){
+                                                      _scaffoldKey.currentState.removeCurrentSnackBar();
+                                                    },
+                                                  ),
+                                                ));
+                                              }
+                                            },
+                                          ),
+                                        ),
                                       )
                                     ],
                                   )
