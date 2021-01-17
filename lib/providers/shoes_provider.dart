@@ -185,6 +185,22 @@ class ShoeProvider with ChangeNotifier{
     return [..._shoes];
   }
 
+  List<Shoe> _filteredShoes = [];
+
+  List<Shoe> get filteredShoes {
+    return [..._filteredShoes];
+  }
+
+  void setFilteredShoes(selectedShoes){
+    _filteredShoes.clear();
+    _shoes.forEach((item) {
+      if(selectedShoes[0] && item.brand=="Adidas") _filteredShoes.add(item);
+      else if(selectedShoes[1] && item.brand=="Nike") _filteredShoes.add(item);
+      else if(selectedShoes[2] && item.brand=="New Balance") _filteredShoes.add(item);
+      else if(selectedShoes[3] && item.brand=="Skechers") _filteredShoes.add(item);
+    });
+    notifyListeners();
+  }
 
   List<Shoe> _cart = [];
   List<Shoe> get cart{

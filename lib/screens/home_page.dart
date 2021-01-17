@@ -27,14 +27,19 @@ class _HomePageState extends State<HomePage> {
 
     //Provider data
     var provider = Provider.of<ShoeProvider>(context);
-    List<Shoe> _shoes = provider.shoes;
+    provider.setFilteredShoes(_selectedBrands);
+    List<Shoe> _shoes = provider.filteredShoes;
 
     _showAlertDialog(BuildContext context) {
 
       // set up the button
       Widget okButton = FlatButton(
-        child: Text("OK"),
-        onPressed: () { },
+        child: Text("Done"),
+        onPressed: () {
+          setState(() {
+            provider.setFilteredShoes(_selectedBrands);
+          });
+        },
       );
 
       // set up the AlertDialog
