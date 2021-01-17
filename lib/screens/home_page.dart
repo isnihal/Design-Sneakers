@@ -2,6 +2,7 @@ import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/cart_screen.dart';
 import 'package:design_sneakers/screens/search_screen.dart';
+import 'package:design_sneakers/utils/border_paint.dart';
 import 'package:design_sneakers/utils/custom_clipper.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
@@ -245,14 +246,9 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text("Cart",style: TextStyle(color: Colors.white),),
                             Container(
-                              height: ScreenUtil().setHeight(40),
-                              width: ScreenUtil().setWidth(40),
-                              decoration: CornerDecoration(
-                                strokeColor: Colors.white,
-                                cornerSide: CornerSide.all(6,6),
-                                strokeWidth: 1
-                              ),
-                              child: Center(child: Text("${provider.cart.length}",style: TextStyle(color: Colors.white),)),
+                              height: 30,
+                              width: 30,
+                              child: CustomPaint(painter: BorderPainter(),child: Center(child: Text("${provider.cart.length}",style: TextStyle(color: Colors.white),))),
                             )
                           ],
                         )
