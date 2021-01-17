@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -104,37 +105,42 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Expanded(
                       child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 16),
-                              child: Text(
-                                  "Imagining your product like this?",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 28
-                                  )
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: ScreenUtil().setWidth(12)
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 16),
+                                child: Text(
+                                    "Imagining your product like this?",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 28
+                                    )
+                                ),
                               ),
-                            ),
-                            ListTile(
-                              onTap: _sendEmail,
-                              leading: Icon(FontAwesomeIcons.at,color: Colors.black87,),
-                              title: Text("nihal@nihalismail.com"),
-                            ),
-                            ListTile(
-                              onTap:_launchWhatsapp,
-                              leading: Icon(FontAwesomeIcons.whatsapp,color: Colors.green,),
-                              title: Text("+91 7907136126"),
-                            ),
-                            ListTile(
-                              onTap: _launchWebsite,
-                              leading: Icon(FontAwesomeIcons.globeAmericas,color: Colors.blue,),
-                              title: Text("www.nihalismail.com",style: TextStyle(color: Colors.black),),
-                            )
-                          ],
+                              ListTile(
+                                onTap: _sendEmail,
+                                leading: Icon(FontAwesomeIcons.at,color: Colors.black87,),
+                                title: Text("nihalismailk@gmail.com"),
+                              ),
+                              ListTile(
+                                onTap:_launchWhatsapp,
+                                leading: Icon(FontAwesomeIcons.whatsapp,color: Colors.green,),
+                                title: Text("+91 7907136126"),
+                              ),
+                              ListTile(
+                                onTap: _launchWebsite,
+                                leading: Icon(FontAwesomeIcons.globeAmericas,color: Colors.blue,),
+                                title: Text("www.nihalismail.com",style: TextStyle(color: Colors.black),),
+                              )
+                            ],
+                          ),
                         ),
                       )
                   )
