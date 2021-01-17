@@ -109,7 +109,7 @@ class ShoeProvider with ChangeNotifier{
 
     ),
     Shoe(
-        name: "Alpha Bounce",
+        name: "Bounce I",
         brand: "Adidas",
         //colors: [//colors.white12,//colors.orange],
         imageURL: "assets/images/adidas3.png",
@@ -255,7 +255,7 @@ class ShoeProvider with ChangeNotifier{
 
     ),
     Shoe(
-        name: "Alpha Bounce",
+        name: "Bounce I",
         brand: "Adidas",
         //colors: [//colors.white12,//colors.orange],
         imageURL: "assets/images/adidas3.png",
