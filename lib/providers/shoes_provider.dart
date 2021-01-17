@@ -367,7 +367,6 @@ class ShoeProvider with ChangeNotifier{
   }
 
   void removeFromWishList(Shoe shoe){
-    print("Remove from wishlist");
     _wishlist.remove(shoe);
     notifyListeners();
   }

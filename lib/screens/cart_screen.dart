@@ -50,7 +50,7 @@ class CartScreen extends StatelessWidget {
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(16)),
                       child: Align(
                         alignment: Alignment.center,
                         child:Text("Your Cart",style:TextStyle(
