@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
             backgroundColor: Colors.white,
             primaryColor: Colors.black,
-            accentColor: Colors.black,
+            accentColor: Colors.red,
             fontFamily: 'Montserrat'
         ),
         routes: {

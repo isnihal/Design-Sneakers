@@ -37,19 +37,20 @@ class WishListScreen extends StatelessWidget{
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+
                     Stack(
                       alignment: Alignment.center,
                       children: [
                         Align(
-                          alignment: Alignment.centerRight,
+                          alignment: Alignment.topRight,
                           child: Padding(
                             padding: EdgeInsets.only(
-                                right: ScreenUtil().setWidth(32)
+                                right: ScreenUtil().setWidth(16)
                             ),
                             child: IconButton(
                               padding: EdgeInsets.zero,
                               constraints: BoxConstraints(),
-                              icon: Icon(Icons.menu,size: ScreenUtil().setWidth(32)),
+                              icon: Icon(Icons.menu),
                               onPressed: _drawerFunction
                             ),
                           ),
