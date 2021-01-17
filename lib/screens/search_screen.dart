@@ -171,9 +171,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                   _selectedShoes.addAll(
                                       _shoes.where((element) =>
                                           element.name.toLowerCase().contains(
-                                              value.toLowerCase()))
+                                              value.toLowerCase()) || element.brand.toLowerCase().contains(
+                                              value.toLowerCase())
+                                      )
                                   );
-
                                 });
                               }
                               else{
