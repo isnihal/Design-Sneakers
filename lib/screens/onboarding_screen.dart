@@ -1,6 +1,5 @@
 import 'package:design_sneakers/widgets/intro_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -11,6 +10,7 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
+  //Controller
   SwiperController _swiperController = new SwiperController();
 
   @override

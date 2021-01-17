@@ -16,14 +16,21 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
 
+  //Animation params
   double _width = ScreenUtil().setWidth(84);
   bool _isVisible = false;
   bool _isSearching = false;
+
+  //Object declerations
   List<Shoe> _selectedShoes;
 
   @override
   void initState() {
+
+    //Initial search result is empty
     _selectedShoes = [];
+
+    //Animation handler
     Future.delayed(Duration.zero,(){
       setState(() {
         _width = ScreenUtil.defaultSize.width;
@@ -43,9 +50,11 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
 
+    //ScreenUtil
     ScreenUtil.init(
         context, designSize: Size(414, 896), allowFontScaling: true);
 
+    //Provider data
     var provider = Provider.of<ShoeProvider>(context);
     List<Shoe> _shoes = provider.shoes;
 

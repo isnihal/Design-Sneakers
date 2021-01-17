@@ -4,7 +4,6 @@ import 'package:design_sneakers/screens/cart_screen.dart';
 import 'package:design_sneakers/screens/search_screen.dart';
 import 'package:design_sneakers/screens/wishlist_screen.dart';
 import 'package:design_sneakers/utils/border_paint.dart';
-import 'package:design_sneakers/utils/custom_clipper.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inner_drawer/inner_drawer.dart';
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   //  Current State of InnerDrawerState
   final GlobalKey<InnerDrawerState> _innerDrawerKey = GlobalKey<InnerDrawerState>();
 
-
+  //Control variables
   int _currentSelectedDrawerButtonIndex = 0;
 
   List<Widget> _createDrawerButtons(){
@@ -72,11 +71,10 @@ class _HomePageState extends State<HomePage> {
 
     //Provider data
     var provider = Provider.of<ShoeProvider>(context);
-
     List<Shoe> _shoes = provider.filteredShoes;
-
     var _selectedBrands = provider.selectedBrands;
 
+    //Alert dialog function
     _showAlertDialog(BuildContext context) {
 
       // Show the dialog
@@ -161,6 +159,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    //Drawer function
     void _toggle() {
       _innerDrawerKey.currentState.toggle(
       );

@@ -1,12 +1,14 @@
 import 'package:design_sneakers/providers/shoes_provider.dart';
+import 'package:design_sneakers/models/shoe.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../models/shoe.dart';
 
 class CartItem extends StatelessWidget {
 
+  //Constructor
   final Shoe shoe;
   final int cardNum;
   final bool isWishList;
@@ -19,6 +21,7 @@ class CartItem extends StatelessWidget {
     //Screen Util Init
     ScreenUtil.init(context, designSize: Size(414, 896), allowFontScaling: true);
 
+    //Provider
     final provider = Provider.of<ShoeProvider>(context,listen: false);
 
     return Container(

@@ -2,12 +2,14 @@ import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/home_page.dart';
 import 'package:design_sneakers/widgets/cart_item.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class WishListScreen extends StatelessWidget{
 
+  //Constructor
   final Function _drawerFunction;
 
   WishListScreen(this._drawerFunction);
@@ -15,11 +17,12 @@ class WishListScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    var provider = Provider.of<ShoeProvider>(context);
-    List<Shoe> products = provider.wishlist;
-
     //Screen Util Init
     ScreenUtil.init(context, designSize: Size(414, 896), allowFontScaling: true);
+
+    //Provider data
+    var provider = Provider.of<ShoeProvider>(context);
+    List<Shoe> products = provider.wishlist;
 
     return WillPopScope(
       onWillPop: (){

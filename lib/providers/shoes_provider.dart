@@ -4,43 +4,22 @@ import '../models/shoe.dart';
 
 class ShoeProvider with ChangeNotifier{
 
+  //UI Functions
   Shoe selectedShoe;
   var selectedBrands = [true,true,true,true];
 
-  double get totalSum {
-    if (_cart.isEmpty)
-      return 0;
-    else {
-      double sum = 0;
-      _cart.forEach((shoe) {
-        sum += shoe.price;
-      });
-      return sum;
-    }
-  }
-
-  double get shippingFee{
-    if(_cart.isEmpty) return 0;
-    else return  _cart.length*4.5;
-  }
-
-  double get tax{
-    if(_cart.isEmpty) return 0;
-    else return totalSum  * 0.15;
-  }
-
-  double get totalAmount{
-    if(_cart.isEmpty) return 0;
-    else return totalSum+tax+shippingFee;
-  }
-
-  int _selectedBrand;
-
-  void setSelectedBrand(int value){
-    _selectedBrand = value;
+  void setFilteredShoes(){
+    _filteredShoes.clear();
+    _shoes.forEach((item) {
+      if(selectedBrands[0] && item.brand=="Adidas") _filteredShoes.add(item);
+      else if(selectedBrands[1] && item.brand=="Nike") _filteredShoes.add(item);
+      else if(selectedBrands[2] && item.brand=="New Balance") _filteredShoes.add(item);
+      else if(selectedBrands[3] && item.brand=="Skechers") _filteredShoes.add(item);
+    });
     notifyListeners();
   }
 
+  //Inventory
   List<Shoe> _shoes = [
     Shoe(
         name: "Pegasus 30",
@@ -331,17 +310,35 @@ class ShoeProvider with ChangeNotifier{
     return [..._filteredShoes];
   }
 
-  void setFilteredShoes(){
-    _filteredShoes.clear();
-    _shoes.forEach((item) {
-      if(selectedBrands[0] && item.brand=="Adidas") _filteredShoes.add(item);
-      else if(selectedBrands[1] && item.brand=="Nike") _filteredShoes.add(item);
-      else if(selectedBrands[2] && item.brand=="New Balance") _filteredShoes.add(item);
-      else if(selectedBrands[3] && item.brand=="Skechers") _filteredShoes.add(item);
-    });
-    notifyListeners();
+  //Accounting functions
+  double get totalSum {
+    if (_cart.isEmpty)
+      return 0;
+    else {
+      double sum = 0;
+      _cart.forEach((shoe) {
+        sum += shoe.price;
+      });
+      return sum;
+    }
   }
 
+  double get shippingFee{
+    if(_cart.isEmpty) return 0;
+    else return  _cart.length*4.5;
+  }
+
+  double get tax{
+    if(_cart.isEmpty) return 0;
+    else return totalSum  * 0.15;
+  }
+
+  double get totalAmount{
+    if(_cart.isEmpty) return 0;
+    else return totalSum+tax+shippingFee;
+  }
+
+  //Cart Managment functions
   List<Shoe> _cart = [];
   List<Shoe> get cart{
     return[..._cart];

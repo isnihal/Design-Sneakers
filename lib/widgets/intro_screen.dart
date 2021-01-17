@@ -1,5 +1,6 @@
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/home_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -7,6 +8,7 @@ import 'package:provider/provider.dart';
 
 class IntroScreen extends StatelessWidget {
 
+  //Constructor
   final int index;
   final SwiperController swiperController;
 
@@ -21,6 +23,7 @@ class IntroScreen extends StatelessWidget {
     //Provider data
     var provider = Provider.of<ShoeProvider>(context,listen: false);
 
+    //Return intro screen based on the screen number
     return
       index == 0 ? Scaffold(
         backgroundColor: Colors.white,

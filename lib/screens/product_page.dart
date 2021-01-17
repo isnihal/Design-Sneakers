@@ -17,6 +17,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
 
+  //Keys and controllers
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   ScrollController _scrollController = new ScrollController();

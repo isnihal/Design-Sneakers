@@ -14,7 +14,10 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    //Mediaquery
     var mediaQuery = MediaQuery.of(context);
+
+    //Provider data
     var provider = Provider.of<ShoeProvider>(context);
     List<Shoe> _cart = provider.cart;
 

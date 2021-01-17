@@ -11,30 +11,6 @@ class ProfilePage extends StatelessWidget {
 
   static const routeName =  "/contact_screen";
 
-  _sendEmail() async{
-    const url = "mailto:<nihalismailk@gmail.com>?subject=<App Development Enquiry>&body=<Hi\n>";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  _launchWebsite() async {
-    const url = 'http://www.nihalismail.com';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  _launchWhatsapp() async {
-    FlutterOpenWhatsapp.sendSingleMessage("+91 7907136126", "Hello, I'm interested in working with you.");
-  }
-
-
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -157,5 +133,27 @@ class ProfilePage extends StatelessWidget {
           )
       ),
     );
+  }
+
+  _sendEmail() async{
+    const url = "mailto:<nihalismailk@gmail.com>?subject=<App Development Enquiry>&body=<Hi\n>";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchWebsite() async {
+    const url = 'http://www.nihalismail.com';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchWhatsapp() async {
+    FlutterOpenWhatsapp.sendSingleMessage("+91 7907136126", "Hello, I'm interested in working with you.");
   }
 }
