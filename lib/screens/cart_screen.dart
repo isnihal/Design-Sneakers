@@ -29,22 +29,38 @@ class CartScreen extends StatelessWidget {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: Stack(
-                children: <Widget>[
-
+              child:  Stack(
+                alignment: Alignment.centerLeft,
+                children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 8),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child:Text("Your Cart",style:TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 28
-                      ) ,),),
-                  )
+                    padding: EdgeInsets.only(
+                      left: ScreenUtil().setWidth(32)
+                    ),
+                    child: IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                      icon: Icon(Icons.keyboard_arrow_left),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child:Text("Your Cart",style:TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28
+                        ) ,),),
+                    ),
+                  ),
                 ],
               ),
             ),
+
             Expanded(
                 child: Column(
                   children: <Widget>[
