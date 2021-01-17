@@ -111,11 +111,12 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         ],
                       ),
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Text("")
-                          ],
+                      SizedBox(height: ScreenUtil().setHeight(16),),
+                      Expanded(
+                        flex: 1,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Text(shoe.description),
                         ),
                       ),
                     ],
@@ -124,7 +125,8 @@ class _ProductPageState extends State<ProductPage> {
               ),
             ),
             Stack(
-              clipBehavior: Clip.none,
+              overflow: Overflow.clip,
+              clipBehavior: Clip.hardEdge,
               alignment: Alignment.topCenter,
               children: [
                 Container(
@@ -145,7 +147,7 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                 ),
                 Positioned(
-                  top: -ScreenUtil().setHeight(45),
+                  top: -ScreenUtil().setHeight(35),
                   child: Container(
                     height: ScreenUtil().setHeight(75),
                     width: ScreenUtil().setHeight(75),
@@ -154,8 +156,11 @@ class _ProductPageState extends State<ProductPage> {
                         borderRadius: BorderRadius.circular(45)
                     ),
                     child: Align(
-                      alignment: Alignment.center,
-                      child: Icon(Icons.keyboard_arrow_up),
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(8)),
+                        child: Icon(Icons.keyboard_arrow_up),
+                      ),
                     ),
                   ),
                 ),
