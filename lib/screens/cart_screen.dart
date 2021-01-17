@@ -1,5 +1,6 @@
 import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
+import 'package:design_sneakers/screens/profile_page.dart';
 import 'package:design_sneakers/widgets/cart_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -136,8 +137,10 @@ class CartScreen extends StatelessWidget {
                   ],
                 )
             ),
-            InkWell(
-              onTap: (){},
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(60)
+              ),
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 32,vertical: 16),
                 width: double.infinity,
@@ -151,6 +154,9 @@ class CartScreen extends StatelessWidget {
                   )),
                 ),
               ),
+              onPressed: (){
+                Navigator.of(context).pushReplacementNamed(ProfilePage.routeName);
+              },
             )
           ],
         ),
