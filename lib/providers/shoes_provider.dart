@@ -198,6 +198,7 @@ class ShoeProvider with ChangeNotifier{
 
   void addToCart(Shoe shoe){
     if(!_cart.contains(shoe)) _cart.add(shoe);
+    notifyListeners();
   }
 
   void removeFromCart(Shoe shoe) {

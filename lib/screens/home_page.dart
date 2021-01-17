@@ -1,5 +1,6 @@
 import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
+import 'package:design_sneakers/screens/cart_screen.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   IconButton(
                     padding: EdgeInsets.zero,
-                    icon: Icon(Icons.crop_square_rounded),
+                    icon: Icon(Icons.menu),
                     onPressed: (){
 
                     },
@@ -137,11 +138,15 @@ class _HomePageState extends State<HomePage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.of(context).pushNamed(CartScreen.routeName);
+                      },
                       child: Center(
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Cart    XXX",style: TextStyle(color: Colors.white),)
+                            Text("Cart",style: TextStyle(color: Colors.white),),
+                            Text("${provider.cart.length}",style: TextStyle(color: Colors.white),)
                           ],
                         )
                       ),

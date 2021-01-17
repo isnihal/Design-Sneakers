@@ -16,6 +16,8 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
 
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   ScrollController _scrollController = new ScrollController();
 
   @override
@@ -30,6 +32,7 @@ class _ProductPageState extends State<ProductPage> {
 
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.black,
         body: Column(
           children: [
@@ -100,13 +103,45 @@ class _ProductPageState extends State<ProductPage> {
                                   borderRadius: BorderRadius.circular(15)
                               ),
                               onPressed: (){
-                                provider.addToCart(shoe);
+                                //provider.addToCart(shoe);
                                 Navigator.of(context).pushNamed(CartScreen.routeName);
                               },
                               child: Center(
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text("Cart    XXX",style: TextStyle(color: Colors.white),)
+                                      Text("Cart",style: TextStyle(color: Colors.white),),
+                                      IconButton(
+                                        icon: Icon(Icons.add,color: Colors.white,),
+                                        onPressed: (){
+                                          if(!provider.isShoeInCart(shoe)){
+                                            provider.addToCart(shoe);
+                                            _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                              content: Text("Item added to cart"),
+                                              duration: Duration(seconds: 1),
+                                              action: SnackBarAction(
+                                                label: "Remove Item",
+                                                onPressed: (){
+                                                 _scaffoldKey.currentState.removeCurrentSnackBar();
+                                                  provider.removeFromCart(shoe);
+                                                },
+                                              ),
+                                            ));
+                                          }
+                                          else{
+                                           _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                              content: Text("Item already in cart"),
+                                              duration: Duration(seconds: 1),
+                                              action: SnackBarAction(
+                                                label: "Dismiss",
+                                                onPressed: (){
+                                                  _scaffoldKey.currentState.removeCurrentSnackBar();
+                                                },
+                                              ),
+                                            ));
+                                          }
+                                        },
+                                      )
                                     ],
                                   )
                               ),
@@ -133,47 +168,67 @@ class _ProductPageState extends State<ProductPage> {
                 ),
               ),
             ),
-            Stack(
-              overflow: Overflow.clip,
-              clipBehavior: Clip.hardEdge,
-              alignment: Alignment.topCenter,
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: ScreenUtil().setHeight(110),
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().setWidth(32)
-                  ),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          bottom: ScreenUtil().setHeight(26)
-                      ),
-                      child: Text("Buy Now",style: TextStyle(color: Colors.white,fontSize: 16),),
+            GestureDetector(
+              onVerticalDragEnd: (_){
+                if(!provider.isShoeInCart(shoe)){
+                  provider.addToCart(shoe);
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                }
+                else{
+                  _scaffoldKey.currentState.showSnackBar(SnackBar(
+                    content: Text("Item already in cart"),
+                    duration: Duration(seconds: 1),
+                    action: SnackBarAction(
+                      label: "Dismiss",
+                      onPressed: (){
+                       _scaffoldKey.currentState.removeCurrentSnackBar();
+                      },
                     ),
-                  ),
-                ),
-                Positioned(
-                  top: -ScreenUtil().setHeight(35),
-                  child: Container(
-                    height: ScreenUtil().setHeight(75),
-                    width: ScreenUtil().setHeight(75),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(45)
+                  ));
+                }
+              },
+              child: Stack(
+                overflow: Overflow.clip,
+                clipBehavior: Clip.hardEdge,
+                alignment: Alignment.topCenter,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: ScreenUtil().setHeight(110),
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().setWidth(32)
                     ),
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(8)),
-                        child: Icon(Icons.keyboard_arrow_up),
+                        padding: EdgeInsets.only(
+                            bottom: ScreenUtil().setHeight(26)
+                        ),
+                        child: Text("Buy Now",style: TextStyle(color: Colors.white,fontSize: 16),),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Positioned(
+                    top: -ScreenUtil().setHeight(35),
+                    child: Container(
+                      height: ScreenUtil().setHeight(75),
+                      width: ScreenUtil().setHeight(75),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(45)
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(8)),
+                          child: Icon(Icons.keyboard_arrow_up),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
 
           ],
