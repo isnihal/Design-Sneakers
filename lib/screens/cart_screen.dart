@@ -30,19 +30,22 @@ class CartScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               child:  Stack(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: ScreenUtil().setWidth(32)
-                    ),
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: BoxConstraints(),
-                      icon: Icon(Icons.keyboard_arrow_left),
-                      onPressed: (){
-                        Navigator.of(context).pop();
-                      },
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(32)
+                      ),
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        icon: Icon(Icons.keyboard_arrow_left,size: ScreenUtil().setWidth(32)),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     ),
                   ),
                   Center(

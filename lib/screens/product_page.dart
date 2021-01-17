@@ -61,7 +61,7 @@ class _ProductPageState extends State<ProductPage> {
                           IconButton(
                             padding: EdgeInsets.zero,
                             constraints: BoxConstraints(),
-                            icon: Icon(Icons.keyboard_arrow_left),
+                            icon: Icon(Icons.keyboard_arrow_left,size: ScreenUtil().setWidth(32)),
                             onPressed: (){
                               Navigator.of(context).pop();
                             },
