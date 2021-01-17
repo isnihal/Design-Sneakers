@@ -84,7 +84,7 @@ class CartScreen extends StatelessWidget {
                               crossAxisSpacing: ScreenUtil().setWidth(30),
                             ),
                             itemBuilder: (ctx,index){
-                              return CartItem(shoe: _cart[index],cardNum: index,);
+                              return CartItem(shoe: _cart[index],cardNum: index,isWishList: false,);
                             },
                           ),
                         )

@@ -2,10 +2,12 @@ import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/cart_screen.dart';
 import 'package:design_sneakers/screens/search_screen.dart';
+import 'package:design_sneakers/screens/wishlist_screen.dart';
 import 'package:design_sneakers/utils/border_paint.dart';
 import 'package:design_sneakers/utils/custom_clipper.dart';
 import 'package:design_sneakers/widgets/shoe_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
@@ -19,6 +21,48 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //  Current State of InnerDrawerState
+  final GlobalKey<InnerDrawerState> _innerDrawerKey = GlobalKey<InnerDrawerState>();
+
+
+  int _currentSelectedDrawerButtonIndex = 0;
+
+  List<Widget> _createDrawerButtons(){
+    List _drawerButtonTexts = ["Home","Wishlist"];
+    List<FlatButton> _drawerButtons = [];
+    for(int i=0;i<_drawerButtonTexts.length;i++) {
+      if (i == _currentSelectedDrawerButtonIndex) {
+        FlatButton flatButton = FlatButton(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: Align(alignment:Alignment.centerLeft,child: Text(_drawerButtonTexts[i],style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 24),textAlign: TextAlign.left,)),
+            onPressed: (){
+              setState(() {
+                _currentSelectedDrawerButtonIndex = i;
+                Navigator.of(context).pop();
+              });
+            }
+        );
+        _drawerButtons.add(flatButton);
+      }
+      else{
+        FlatButton flatButton = FlatButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: Container(alignment:Alignment.centerLeft,child: Text(_drawerButtonTexts[i],style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 16,),textAlign: TextAlign.left,)),
+          onPressed: (){
+            setState(() {
+              _currentSelectedDrawerButtonIndex = i;
+              Navigator.of(context).pop();
+            });
+          },
+        );
+        _drawerButtons.add(flatButton);
+      }
+    }
+    return _drawerButtons;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,171 +161,193 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    void _toggle() {
+      _innerDrawerKey.currentState.toggle(
+      );
+    }
 
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: ScreenUtil().setWidth(32)
-          ),
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            children: [
-              SizedBox(
-                height: ScreenUtil().setHeight(24),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
-                    icon: Icon(Icons.keyboard_arrow_left,size: ScreenUtil().setWidth(32),),
-                    onPressed: (){
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
-                    icon: Icon(Icons.menu),
-                    onPressed: (){
-
-                    },
-                  )
-                ],
-              ),
-              SizedBox(
-                height: ScreenUtil().setHeight(32),
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Choose",
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 26,
-                      fontWeight: FontWeight.normal
+    return InnerDrawer(
+      key: _innerDrawerKey,
+      boxShadow: [BoxShadow(color: Colors.transparent)],
+      colorTransitionChild: Colors.white,
+      borderRadius: 50,
+      // default 0
+      leftAnimationType: InnerDrawerAnimation.static,
+      // default static
+      rightAnimationType: InnerDrawerAnimation.quadratic,
+      colorTransitionScaffold: Colors.white,
+      innerDrawerCallback: (a) => print(a),
+      offset: IDOffset.only(bottom: 0.05),
+      proportionalChildArea: true,
+      scale: IDOffset.horizontal(0.7),
+      rightChild: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: _createDrawerButtons()
+      ),
+      scaffold: _currentSelectedDrawerButtonIndex == 0? SafeArea(
+        child: Scaffold(
+          body: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: ScreenUtil().setWidth(32)
+            ),
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: ScreenUtil().setHeight(24),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                      icon: Icon(Icons.keyboard_arrow_left,size: ScreenUtil().setWidth(32),),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      },
                     ),
-                  ),
-                  SizedBox(width: ScreenUtil().setWidth(8),),
-                  Text(
-                    "Sneakers",
-                    style: TextStyle(
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                      icon: Icon(Icons.menu),
+                      onPressed: _toggle,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: ScreenUtil().setHeight(32),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Choose",
+                      style: TextStyle(
                         color: Colors.black87,
                         fontSize: 26,
-                        fontWeight: FontWeight.w800
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: ScreenUtil().setHeight(32),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: ScreenUtil().setHeight(64),
-                        width: ScreenUtil().setWidth(64),
-                        child: MaterialButton(
-                          color: Colors.white,
-                          elevation: 8,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)
-                          ),
-                          onPressed: (){
-                            Navigator.of(context).pushNamed(SearchScreen.routeName);
-                          },
-                          child: Center(
-                            child: Icon(Icons.search),
-                          ),
-                        ),
-
-                      ),
-                      SizedBox(
-                        width: ScreenUtil().setWidth(16),
-                      ),
-                      Container(
-                        height: ScreenUtil().setHeight(64),
-                        width: ScreenUtil().setWidth(64),
-                        child: MaterialButton(
-                          color: Colors.white,
-                          elevation: 8,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)
-                          ),
-                          onPressed: (){
-                            _showAlertDialog(context);
-                          },
-                          child: Center(
-                            child: Icon(Icons.filter_alt_outlined),
-                          ),
-                        ),
-
-                      ),
-                      SizedBox(
-                        width: ScreenUtil().setWidth(16),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: ScreenUtil().setHeight(64),
-                    width: ScreenUtil().setWidth(148),
-                    child: MaterialButton(
-                      color: Colors.black,
-                      elevation: 8,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)
-                      ),
-                      onPressed: (){
-                        Navigator.of(context).pushNamed(CartScreen.routeName);
-                      },
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Cart",style: TextStyle(color: Colors.white),),
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: CustomPaint(painter: BorderPainter(),child: Center(child: Text("${provider.cart.length}",style: TextStyle(color: Colors.white),))),
-                            )
-                          ],
-                        )
+                        fontWeight: FontWeight.normal
                       ),
                     ),
-
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: ScreenUtil().setHeight(32),
-              ),
-              Expanded(
-                child: WaterfallFlow.builder(
-                  itemCount: _shoes.length,
-                  padding: EdgeInsets.zero,
-                  gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: ScreenUtil().setHeight(30),
-                    crossAxisSpacing: ScreenUtil().setWidth(30),
-                  ),
-                  itemBuilder: (ctx,index){
-                    if(index==1)
-                      return ShoeWidget(shoe: _shoes[index], hasMargin: true);
-                    else
-                      return ShoeWidget(shoe: _shoes[index], hasMargin: false);
-                  },
+                    SizedBox(width: ScreenUtil().setWidth(8),),
+                    Text(
+                      "Sneakers",
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
+                SizedBox(
+                  height: ScreenUtil().setHeight(32),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: ScreenUtil().setHeight(64),
+                          width: ScreenUtil().setWidth(64),
+                          child: MaterialButton(
+                            color: Colors.white,
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)
+                            ),
+                            onPressed: (){
+                              Navigator.of(context).pushNamed(SearchScreen.routeName);
+                            },
+                            child: Center(
+                              child: Icon(Icons.search),
+                            ),
+                          ),
+
+                        ),
+                        SizedBox(
+                          width: ScreenUtil().setWidth(16),
+                        ),
+                        Container(
+                          height: ScreenUtil().setHeight(64),
+                          width: ScreenUtil().setWidth(64),
+                          child: MaterialButton(
+                            color: Colors.white,
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            onPressed: (){
+                              _showAlertDialog(context);
+                            },
+                            child: Center(
+                              child: Icon(Icons.filter_alt_outlined),
+                            ),
+                          ),
+
+                        ),
+                        SizedBox(
+                          width: ScreenUtil().setWidth(16),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: ScreenUtil().setHeight(64),
+                      width: ScreenUtil().setWidth(148),
+                      child: MaterialButton(
+                        color: Colors.black,
+                        elevation: 8,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                        onPressed: (){
+                          Navigator.of(context).pushNamed(CartScreen.routeName);
+                        },
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Cart",style: TextStyle(color: Colors.white),),
+                              Container(
+                                height: 30,
+                                width: 30,
+                                child: CustomPaint(painter: BorderPainter(),child: Center(child: Text("${provider.cart.length}",style: TextStyle(color: Colors.white),))),
+                              )
+                            ],
+                          )
+                        ),
+                      ),
+
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: ScreenUtil().setHeight(32),
+                ),
+                Expanded(
+                  child: WaterfallFlow.builder(
+                    itemCount: _shoes.length,
+                    padding: EdgeInsets.zero,
+                    gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: ScreenUtil().setHeight(30),
+                      crossAxisSpacing: ScreenUtil().setWidth(30),
+                    ),
+                    itemBuilder: (ctx,index){
+                      if(index==1)
+                        return ShoeWidget(shoe: _shoes[index], hasMargin: true);
+                      else
+                        return ShoeWidget(shoe: _shoes[index], hasMargin: false);
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-      ),
+      ):WishListScreen(_toggle),
     );
   }
 }

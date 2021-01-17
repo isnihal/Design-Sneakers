@@ -9,8 +9,9 @@ class CartItem extends StatelessWidget {
 
   final Shoe shoe;
   final int cardNum;
+  final bool isWishList;
 
-  CartItem({@required this.shoe,@required this.cardNum});
+  CartItem({@required this.shoe,@required this.cardNum,@required this.isWishList});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +81,8 @@ class CartItem extends StatelessWidget {
                 child: IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: (){
-                   provider.removeFromCart(shoe);
+                    if(!isWishList) provider.removeFromCart(shoe);
+                    else provider.removeFromWishList(shoe);
                   },
                   icon: Icon(Icons.delete,color: Colors.black,),
                 ),

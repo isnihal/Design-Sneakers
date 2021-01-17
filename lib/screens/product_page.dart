@@ -2,7 +2,6 @@ import 'package:design_sneakers/models/shoe.dart';
 import 'package:design_sneakers/providers/shoes_provider.dart';
 import 'package:design_sneakers/screens/cart_screen.dart';
 import 'package:design_sneakers/utils/border_paint.dart';
-import 'package:design_sneakers/utils/custom_clipper.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
